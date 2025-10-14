@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TravelGo — Explore the world</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body data-page="index">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+     <a href="index.html"><img src="assets/logo.png" alt="TravelGo" width="100" class="me-2"></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars"
+      aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end " id="navbars">
+      <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
+        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+        <li class="nav-item"><a class="nav-link" href="Mybooking">My Bookings</a></li>
+        <li class="nav-item"><a class="nav-link" href="About.html">About Us</a></li>
+      </ul>
+      <a href="profile.jsp" class="ms-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile"
+          class="rounded-circle " width="35" height="35">
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Hero Carousel -->
+  <div id="hero" class="position-relative">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1920&auto=format&fit=crop" class="d-block w-100" alt="Beach">
+          <div class="hero-overlay"></div>
+          <div class="carousel-caption text-start">
+            <h1 class="fw-bold">Find your perfect getaway</h1>
+            <p>Handpicked packages, flexible dates, and best prices.</p>
+            <a href="destinations.html" class="btn btn-warning">Browse Destinations</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1920&auto=format&fit=crop" class="d-block w-100" alt="Mountains">
+          <div class="hero-overlay"></div>
+          <div class="carousel-caption">
+            <h1 class="fw-bold">Adventure awaits</h1>
+            <p>Trek, dive, ski — pick your vibe.</p>
+            <a href="destinations.html" class="btn btn-warning">Explore Now</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop" class="d-block w-100" alt="City">
+          <div class="hero-overlay"></div>
+          <div class="carousel-caption text-end">
+            <h1 class="fw-bold">City breaks & culture</h1>
+            <p>Short trips, long memories.</p>
+            <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#enquiryModal">Plan a Weekend</a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="enquiryModalLabel">Enquiry Now</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action=Enquiry method="post">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name *</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City of Residence *</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number *</label>
+            <input type="tel" class="form-control" id="phone" name="phone" required>
+          </div>
+          <div class="mb-3">
+            <label for="destination" class="form-label">Travel Destination *</label>
+            <input type="text" class="form-control" id="destination" name="destination" required>
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Date of Travel *</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+          </div>
+          <div class="mb-3">
+            <label for="people" class="form-label">No. of People *</label>
+            <input type="number" class="form-control" id="people" name="people" required>
+          </div>
+          <div class="mb-3">
+            <label for="vacationType" class="form-label">Vacation Type *</label>
+            <select class="form-select" id="vacationType" name="vacation" required>
+              <option value="">Select</option>
+              <option>Family</option>
+              <option>Honeymoon</option>
+              <option>Adventure</option>
+              <option>Business</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-warning w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Popular packages -->
+  <section class="py-5 bg-light">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-3">
+      <h2 class="section-title">Popular Packages</h2>
+      <a href="destinations.html" class="btn btn-warning btn-sm">See all</a>
+    </div>
+
+    <div id="popularGrid" class="row g-4">
+      <!-- Card 1 -->
+      <!-- Card 1 -->
+<div class="col-md-4">
+  <div class="card h-100 shadow-sm">
+    <img src="assets/goa.jpg" class="card-img-top" alt="Goa Beach">
+    <div class="card-body">
+      <h5 class="card-title">Goa Holiday</h5>
+      <p class="card-text">3 Nights / 4 Days<br>Enjoy beaches, nightlife & water sports.</p>
+      <p class="text-info fw-bold">
+        ₹15,999 <span class="text-muted">/ Adult</span><br>
+        ₹9,999 <span class="text-muted">/ Child</span>
+      </p>
+      <a href="package-details.html?id=goa" class="btn btn-outline-warning w-100">View Details</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="col-md-4">
+  <div class="card h-100 shadow-sm">
+    <img src="assets/kerala.jpg" class="card-img-top" alt="Kerala Backwaters">
+    <div class="card-body">
+      <h5 class="card-title">Kerala Backwaters</h5>
+      <p class="card-text">4 Nights / 5 Days<br>Houseboat stays & lush green landscapes.</p>
+      <p class="text-info fw-bold">
+        ₹18,499 <span class="text-muted">/ Adult</span><br>
+        ₹11,499 <span class="text-muted">/ Child</span>
+      </p>
+      <a href="package-details.html?id=kerala" class="btn btn-outline-warning w-100">View Details</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="col-md-4">
+  <div class="card h-100 shadow-sm">
+    <img src="assets/dubai.jpg" class="card-img-top" alt="Dubai Tour">
+    <div class="card-body">
+      <h5 class="card-title">Dubai City Tour</h5>
+      <p class="card-text">5 Nights / 6 Days<br>Burj Khalifa, desert safari & shopping.</p>
+      <p class="text-info fw-bold">
+        ₹45,999 <span class="text-muted">/ Adult</span><br>
+        ₹29,999 <span class="text-muted">/ Child</span>
+      </p>
+      <a href="package-details.html?id=dubai" class="btn btn-outline-warning w-100">View Details</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="col-md-4">
+  <div class="card h-100 shadow-sm">
+    <img src="assets/singapore.jpg" class="card-img-top" alt="Singapore City">
+    <div class="card-body">
+      <h5 class="card-title">Singapore Getaway</h5>
+      <p class="card-text">4 Nights / 5 Days<br>Universal Studios, Marina Bay & Gardens by the Bay.</p>
+      <p class="text-info fw-bold">
+        ₹39,999 <span class="text-muted">/ Adult</span><br>
+        ₹22,999 <span class="text-muted">/ Child</span>
+      </p>
+      <a href="package-details.html?id=singapore" class="btn btn-outline-warning w-100">View Details</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="col-md-4">
+  <div class="card h-100 shadow-sm">
+    <img src="assets/thailand.jpg" class="card-img-top" alt="Thailand Beach">
+    <div class="card-body">
+      <h5 class="card-title">Thailand Special</h5>
+      <p class="card-text">5 Nights / 6 Days<br>Bangkok & Phuket beaches, nightlife, temples.</p>
+      <p class="text-info fw-bold">
+        ₹28,999 <span class="text-muted">/ Adult</span><br>
+        ₹17,999 <span class="text-muted">/ Child</span>
+      </p>
+      <a href="package-details.html?id=thailand" class="btn btn-outline-warning w-100">View Details</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="col-md-4">
+  <div class="card h-100 shadow-sm">
+    <img src="assets/paris.jpg" class="card-img-top" alt="Eiffel Tower Paris">
+    <div class="card-body">
+      <h5 class="card-title">Paris & Europe Tour</h5>
+      <p class="card-text">6 Nights / 7 Days<br>Romantic Paris, Eiffel Tower & European highlights.</p>
+      <p class="text-info fw-bold">
+        ₹79,999 <span class="text-muted">/ Adult</span><br>
+        ₹54,999 <span class="text-muted">/ Child</span>
+      </p>
+      <a href="package-details.html?id=paris" class="btn btn-outline-warning w-100">View Details</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="row text-center g-4">
+
+      <!-- Abroad Trips -->
+      <div class="col-md-4">
+        <h3 class="fw-bold text-warning">50,000+</h3>
+        <h5 class="fw-bold">Abroad Trips</h5>
+        <p class="text-muted small">
+          For the last decade, TravelGo have organized more than 50,000 international itineraries.
+        </p>
+      </div>
+
+      <!-- Experiences -->
+      <div class="col-md-4">
+        <h3 class="fw-bold text-warning">Handcrafted</h3>
+        <h5 class="fw-bold">Experiences</h5>
+        <p class="text-muted small">
+          Each and every itinerary is customized according to the taste of the customers.
+        </p>
+      </div>
+
+      <!-- Travelers -->
+      <div class="col-md-4">
+        <h3 class="fw-bold text-warning">Extremely Happy</h3>
+        <h5 class="fw-bold">Travellers</h5>
+        <p class="text-muted small">
+          TravelGo holds record of great customer satisfaction and all customers are retained with us.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="travelgo-intro">
+  <div class="container">
+    <h2>Welcome to <span class="highlight">TravelGo</span></h2>
+    <p>
+      At <strong>TravelGo Pvt. Ltd</strong>, we create unforgettable holidays and seamless
+      travel experiences. From family vacations to corporate retreats, we handle it all with
+      care and efficiency.
+    </p>
+    <p>
+      Our services include personalized holiday packages, business travel, school/college trips,
+      hotel bookings, transport arrangements, and complete destination management.
+    </p>
+    <p class="fw-bold">
+      Discover what makes <span class="highlight">TravelGo</span> special—customer satisfaction,
+      curated experiences, and stress-free journeys.
+    </p>
+    <!-- <a href="enquiry.html" class="btn-enquiry">Plan Your Trip</a> -->
+  </div>
+</section>
+
+<section class="happy-clients">
+  <div class="container">
+    <h2>Our Happy Clients</h2>
+    <p class="subtitle">Trusted by thousands of travelers worldwide</p>
+
+    <div class="client-logos">
+      <img src="assets/ceo-ranindia-gtholidays-review.jpg" alt="Client 1">
+      <img src="assets/ceo-watertec-gtholidays-review.jpg" alt="Client 2">
+      <img src="assets/dd-gtholidays-feedback.jpg" alt="Client 3">
+      <img src="assets/vp-luker-gtholidays-feedback.jpg" alt="Client 4">
+      <img src="assets/kirthika-gtholidays-feedback.jpg" alt="Client 5">
+    </div>
+  </div>
+</section>
+
+<section class="stay-connected">
+  <div class="container">
+    <h2>Stay Connected</h2>
+    <p class="subtitle">Book Your Dream Vacay Today!</p>
+
+    <div class="contact-info">
+      <p><strong>📞</strong> +91 9940882200</p>
+      <p><strong>✉️</strong> mail@travelgo.in</p>
+    </div>
+
+    <form class="contact-form">
+      <div class="form-group">
+        <input type="text" placeholder="Name *" required>
+        <input type="text" placeholder="City of Residence *" required>
+      </div>
+
+      <div class="form-group">
+        <input type="email" placeholder="Email *" required>
+        <input type="tel" placeholder="Phone Number *" required>
+      </div>
+
+      <div class="form-group">
+        <input type="tel" placeholder="WhatsApp" >
+        <input type="text" placeholder="Travel Destination *" required>
+      </div>
+
+      <div class="form-group">
+        <input type="date" placeholder="Date of Travel *" required>
+        <input type="number" placeholder="No. of People *" required>
+      </div>
+
+      <div class="form-group">
+        <select required>
+          <option value="">Vacation Type *</option>
+          <option>Family</option>
+          <option>Couple</option>
+          <option>Friends</option>
+          <option>Corporate</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+
+
+<section class="testimonials">
+  <div class="container">
+    <h2>Our Testimonials</h2>
+    <p class="subtitle">See what our travelers say about us!</p>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="message">“TravelGo made our honeymoon to Bali unforgettable! Everything was perfectly planned.”</p>
+        <h4>— Priya & Arjun</h4>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="message">“Best travel agency! My Europe trip was hassle-free and so enjoyable.”</p>
+        <h4>— Kavitha, Chennai</h4>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="message">“Excellent service and very responsive team. Highly recommend TravelGo.”</p>
+        <h4>— Rahul Sharma</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="featured-video">
+  <div class="container"><br><br>
+    <h2>Featured Video</h2>
+    <p class="subtitle">Experience the beauty of travel with TravelGo</p>
+    <div class="video-container">
+      <iframe 
+        width="100%" 
+        height="500" 
+        src="https://www.youtube.com/embed/-980g6c8GVY" 
+        title="TravelGo Promo Video" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+
+<button class="btn btn-warning position-fixed" 
+        style="bottom: 20px; right: 20px; z-index: 1050;" 
+        data-bs-toggle="modal" data-bs-target="#enquiryModal">
+  Enquire Now
+</button>
+
+<!-- Enquiry Modal -->
+<div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title fw-bold" id="enquiryModalLabel">Enquire Now</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="enquiryForm">
+          <div class="row g-3">
+            
+            <div class="col-md-6">
+              <label class="form-label">Name *</label>
+              <input type="text" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">City of Residence *</label>
+              <input type="text" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Email *</label>
+              <input type="email" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Phone Number *</label>
+              <div class="input-group">
+                <span class="input-group-text">+91</span>
+                <input type="tel" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">WhatsApp</label>
+              <div class="input-group">
+                <span class="input-group-text">+91</span>
+                <input type="tel" class="form-control">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Travel Destination *</label>
+              <input type="text" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Date of Travel *</label>
+              <input type="date" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">No. of People *</label>
+              <input type="number" class="form-control" min="1" required>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">Vacation Type *</label>
+              <select class="form-select" required>
+                <option value="">Choose...</option>
+                <option>Family</option>
+                <option>Honeymoon</option>
+                <option>Adventure</option>
+                <option>Luxury</option>
+                <option>Budget</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="text-end mt-4">
+            <button type="submit" class="btn btn-warning">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<br><br><br>
+<footer class="bg-dark text-light pt-5 pb-3 mt-auto">
+  <div class="container">
+    <div class="row g-4">
+      
+      <!-- Brand Info -->
+      <div class="col-md-6 col-lg-4">
+        <h4 class="fw-bold text-warning">TravelGo</h4>
+        <p class="small">
+          Your trusted companion for hassle-free travel planning. Explore, book, and enjoy unforgettable journeys with ease.
+        </p>
+        <p class="small mb-0">© <span id="year"></span> TravelGo Pvt Ltd. All rights reserved.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-6 col-lg-2">
+        <h6 class="fw-bold text-warning">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a style="text-decoration:none; color:white;" href="destinations.html" class="footer-link">Destinations</a></li>
+          <li><a style="text-decoration:none; color:white;" href="terms.html" class="footer-link">Terms & Conditions</a></li>
+          <li><a style="text-decoration:none; color:white;" href="privacy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a style="text-decoration:none; color:white;" href="contact.html" class="footer-link">Contact Us</a></li>
+          <li><a style="text-decoration:none; color:white;" href="About.html" class="footer-link">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-12 col-lg-4 text-lg-end">
+        <h6 class="fw-bold text-warning">Connect with Us</h6>
+        <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a href="#" class="btn btn-outline-light btn-sm rounded-circle me-2">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <a href="#" class="btn btn-outline-light btn-sm rounded-circle">
+          <i class="bi bi-youtube"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

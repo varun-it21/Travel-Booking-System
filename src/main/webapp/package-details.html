@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+    #package-desc {
+    white-space: pre-line;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <h2 id="package-title"></h2>
+        <img id="package-img" class="img-fluid mb-3">
+        <p id="package-desc"></p>
+        <p class="fw-bold text-info" id="package-price-adult"></p>
+        <p class="fw-bold text-info" id="package-price-child"></p>
+
+        <h4>What's Included</h4>
+        <ul id="package-included"></ul>
+
+        <h4>What's Excluded</h4>
+        <ul id="package-excluded"></ul>
+
+        <a href="#" id="book-now-btn" class="btn btn-primary btn-lg">Book Now</a>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const packageId = params.get("id");
+
+        const packages = {
+        		goa: {
+        	        title: "Goa Holiday",
+        	        img: "assets/goa.jpg",
+        	        desc: `3 Nights / 4 Days
+        	Day 1: Arrival in Goa, hotel check-in, evening beach visit & leisure.
+        	Day 2: North Goa sightseeing – Fort Aguada, Baga Beach, Calangute Beach, Anjuna.
+        	Day 3: South Goa sightseeing – Colva Beach, Miramar Beach, Basilica of Bom Jesus, Shantadurga Temple.
+        	Day 4: Breakfast & checkout, drop at airport/railway station.`,
+        	        priceAdult: "₹15,999 / Adult",
+        	        priceChild: "₹9,999 / Child",
+        	        included: [
+        	            "3 Nights stay in 3-star beach resort",
+        	            "Daily breakfast & dinner",
+        	            "Airport pick-up & drop",
+        	            "North & South Goa sightseeing",
+        	            "Private AC transfers"
+        	        ],
+        	        excluded: [
+        	            "Airfare / Train tickets",
+        	            "Lunch and personal expenses",
+        	            "Water sports activities (parasailing, jet ski)",
+        	            "Travel insurance"
+        	        ]
+        	    },
+        	    kerala: {
+        	        title: "Kerala Backwaters",
+        	        img: "assets/kerala.jpg",
+        	        desc: `4 Nights / 5 Days
+        	Day 1: Arrival at Kochi, transfer to Munnar, tea plantations visit.
+        	Day 2: Full-day Munnar sightseeing – Eravikulam National Park, Echo Point, Mattupetty Dam.
+        	Day 3: Transfer to Thekkady, Periyar Wildlife Sanctuary visit & evening spice plantation tour.
+        	Day 4: Transfer to Alleppey, check-in to houseboat, enjoy backwater cruise with meals.
+        	Day 5: Breakfast, checkout, and transfer to Kochi airport/railway station.`,
+        	        priceAdult: "₹18,499 / Adult",
+        	        priceChild: "₹11,499 / Child",
+        	        included: [
+        	            "2 Nights stay in Munnar + 1 Night houseboat + 1 Night Thekkady",
+        	            "Daily breakfast & dinner",
+        	            "Houseboat cruise with meals",
+        	            "Airport/railway station transfers",
+        	            "Sightseeing in Munnar & Thekkady"
+        	        ],
+        	        excluded: [
+        	            "Airfare / Train tickets",
+        	            "Ayurveda massage/spa treatments",
+        	            "Lunch not mentioned in itinerary",
+        	            "Personal expenses & tips"
+        	        ]
+        	    },
+        	    dubai: {
+        	        title: "Dubai Desert Safari",
+        	        img: "assets/dubai.jpg",
+        	        desc: `4 Nights / 5 Days
+        	Day 1: Arrival in Dubai, hotel check-in, evening leisure.
+        	Day 2: Half-day Dubai city tour including Dubai Museum, Jumeirah Mosque, Atlantis The Palm.
+        	Day 3: Desert safari with dune bashing, camel ride & BBQ dinner.
+        	Day 4: Free day for shopping or optional Burj Khalifa visit & Dhow Cruise.
+        	Day 5: Breakfast & airport drop.`,
+        	        priceAdult: "₹42,000 / Adult",
+        	        priceChild: "₹25,000 / Child",
+        	        included: [
+        	            "4 Nights stay in 4-star hotel",
+        	            "Daily breakfast",
+        	            "Desert safari with BBQ dinner",
+        	            "City tour including Burj Khalifa & Dubai Mall",
+        	            "Airport transfers"
+        	        ],
+        	        excluded: [
+        	            "Airfare & Visa fees",
+        	            "Personal expenses",
+        	            "Entry tickets for attractions not included",
+        	            "Travel insurance"
+        	        ]
+        	    },
+        	    singapore: {
+        	        title: "Singapore Getaway",
+        	        img: "assets/singapore.jpg",
+        	        desc: `4 Nights / 5 Days
+        	Day 1: Arrival, hotel check-in, evening leisure.
+        	Day 2: Half-day Singapore city tour – Merlion Park, Marina Bay Sands, Chinatown.
+        	Day 3: Sentosa Island tour with cable car ride, Wings of Time show.
+        	Day 4: Day trip to Universal Studios (optional).
+        	Day 5: Breakfast & airport drop.`,
+        	        priceAdult: "₹39,999 / Adult",
+        	        priceChild: "₹24,999 / Child",
+        	        included: [
+        	            "4 Nights stay in 3-star hotel",
+        	            "Daily breakfast",
+        	            "Half-day city tour",
+        	            "Sentosa Island with cable car ride",
+        	            "Airport transfers"
+        	        ],
+        	        excluded: [
+        	            "Airfare & Visa fees",
+        	            "Universal Studios entry ticket",
+        	            "Personal expenses",
+        	            "Lunch & dinner not mentioned"
+        	        ]
+        	    },
+        	    thailand: {
+        	        title: "Thailand Special",
+        	        img: "assets/thailand.jpg",
+        	        desc: `5 Nights / 6 Days
+        	Day 1: Arrival in Bangkok, city & temple tour.
+        	Day 2: Safari World & Marine Park tour with lunch.
+        	Day 3: Transfer to Phuket, leisure evening.
+        	Day 4: Phi Phi Island tour with lunch.
+        	Day 5: Phuket city tour & shopping.
+        	Day 6: Breakfast & airport drop.`,
+        	        priceAdult: "₹28,999 / Adult",
+        	        priceChild: "₹18,999 / Child",
+        	        included: [
+        	            "3 Nights stay in Bangkok + 2 Nights stay in Phuket",
+        	            "Daily breakfast",
+        	            "Bangkok city & temple tour",
+        	            "Phi Phi Island tour with lunch",
+        	            "Airport transfers"
+        	        ],
+        	        excluded: [
+        	            "Airfare",
+        	            "Visa on arrival fee",
+        	            "Lunch & dinner not mentioned",
+        	            "Personal shopping expenses"
+        	        ]
+        	    },
+        	    paris: {
+        	        title: "Paris & Europe Tour",
+        	        img: "assets/paris.jpg",
+        	        desc: `6 Nights / 7 Days
+        	Day 1: Arrival in Paris, evening Seine River cruise.
+        	Day 2: Paris city tour – Eiffel Tower, Louvre Museum (outside), Champs-Élysées.
+        	Day 3: Transfer to Switzerland, leisure day.
+        	Day 4: Mt. Titlis/Interlaken tour.
+        	Day 5: Transfer to Italy, Rome sightseeing.
+        	Day 6: Vatican City tour & Colosseum (outside view).
+        	Day 7: Breakfast & departure.`,
+        	        priceAdult: "₹79,999 / Adult",
+        	        priceChild: "₹55,999 / Child",
+        	        included: [
+        	            "2 Nights Paris + 2 Nights Switzerland + 2 Nights Italy",
+        	            "Daily breakfast",
+        	            "Paris city tour with Seine cruise",
+        	            "Switzerland sightseeing (Mt. Titlis/Interlaken)",
+        	            "Airport & intercity transfers"
+        	        ],
+        	        excluded: [
+        	            "Airfare & Visa fees",
+        	            "Lunch & dinner not mentioned",
+        	            "Entry tickets to museums/attractions",
+        	            "Travel insurance"
+        	        ]
+        	    },
+        	    manali: {
+        	        title: "Manali Adventure",
+        	        img: "assets/manali.jpg",
+        	        desc: `5 Nights / 6 Days
+        	Day 1: Arrival at Manali, hotel check-in, evening leisure.
+        	Day 2: Manali local sightseeing – Hadimba Temple, Mall Road.
+        	Day 3: Solang Valley or Rohtang Pass (snow activities).
+        	Day 4: Manikaran & Kasol trip.
+        	Day 5: River rafting & leisure shopping.
+        	Day 6: Breakfast & departure.`,
+        	        priceAdult: "₹22,999 / Adult",
+        	        priceChild: "₹14,999 / Child",
+        	        included: [
+        	            "5 Nights stay in cozy hotels/guesthouses",
+        	            "Daily breakfast",
+        	            "Trekking & sightseeing",
+        	            "River rafting experience",
+        	            "Airport/Bus station pick-up & drop"
+        	        ],
+        	        excluded: [
+        	            "Travel insurance",
+        	            "Lunch & dinner not mentioned",
+        	            "Adventure gear rental",
+        	            "Personal expenses"
+        	        ]
+        	    },
+        	    jaipur: {
+        	        title: "Jaipur Heritage Tour",
+        	        img: "assets/jaipur.jpg",
+        	        desc: `3 Nights / 4 Days
+        	Day 1: Arrival in Jaipur, evening light & sound show at Amber Fort.
+        	Day 2: Jaipur sightseeing – City Palace, Jantar Mantar, Hawa Mahal.
+        	Day 3: Amber Fort visit, local markets, Rajasthani cultural dinner.
+        	Day 4: Breakfast & departure.`,
+        	        priceAdult: "₹14,999 / Adult",
+        	        priceChild: "₹9,999 / Child",
+        	        included: [
+        	            "3 Nights stay in heritage hotels",
+        	            "Daily breakfast",
+        	            "City tours including Amber Fort, City Palace, Hawa Mahal",
+        	            "Local market visits",
+        	            "Airport/railway transfers"
+        	        ],
+        	        excluded: [
+        	            "Travel insurance",
+        	            "Lunch & personal expenses",
+        	            "Guide fees for optional tours",
+        	            "Souvenirs & shopping"
+        	        ]
+        	    },
+        	    maldives: {
+        	        title: "Maldives Luxury Escape",
+        	        img: "assets/maldives.jpg",
+        	        desc: `4 Nights / 5 Days
+        	Day 1: Arrival in Maldives, speedboat transfer to resort.
+        	Day 2: Leisure at beach, snorkeling & sunset view.
+        	Day 3: Water sports & optional dolphin cruise.
+        	Day 4: Relaxation & private beach dinner (optional).
+        	Day 5: Breakfast & transfer to airport.`,
+        	        priceAdult: "₹65,000 / Adult",
+        	        priceChild: "₹40,000 / Child",
+        	        included: [
+        	            "4 Nights stay in beachfront resorts",
+        	            "Daily breakfast",
+        	            "Airport transfers",
+        	            "Snorkeling and water activities",
+        	            "Private beach access"
+        	        ],
+        	        excluded: [
+        	            "Airfare",
+        	            "Lunch & dinner not included",
+        	            "Spa treatments & personal expenses",
+        	            "Travel insurance"
+        	        ]
+        	    },
+        	    bali: {
+        	        title: "Bali Exotic Escape",
+        	        img: "assets/bali.jpg",
+        	        desc: `5 Nights / 6 Days
+        	Day 1: Arrival, hotel check-in, evening Uluwatu Temple visit.
+        	Day 2: Ubud day tour – Monkey Forest, rice terraces, Tegenungan Waterfall.
+        	Day 3: Water sports at Tanjung Benoa, visit Nusa Dua & Jimbaran Beach.
+        	Day 4: Tanah Lot temple & shopping.
+        	Day 5: Leisure or optional volcano tour.
+        	Day 6: Breakfast & airport drop.`,
+        	        priceAdult: "₹52,000 / Adult",
+        	        priceChild: "₹32,000 / Child",
+        	        included: [
+        	            "5 Nights stay in resorts/hotels",
+        	            "Daily breakfast",
+        	            "Bali sightseeing tours",
+        	            "Temple visits & cultural experiences",
+        	            "Airport transfers"
+        	        ],
+        	        excluded: [
+        	            "Airfare & Visa fees",
+        	            "Lunch & dinner not mentioned",
+        	            "Spa treatments & personal expenses",
+        	            "Travel insurance"
+        	        ]
+        	    },
+        	    kashmir: {
+        	        title: "Kashmir Paradise Tour",
+        	        img: "assets/kashmir.jpg",
+        	        desc: `5 Nights / 6 Days
+        	Day 1: Arrival at Srinagar, Shikara ride on Dal Lake.
+        	Day 2: Srinagar sightseeing – Mughal Gardens, Shankaracharya Temple.
+        	Day 3: Gulmarg day trip & Gondola ride.
+        	Day 4: Pahalgam sightseeing & Betaab Valley visit.
+        	Day 5: Sonmarg optional trip, evening leisure.
+        	Day 6: Breakfast & departure.`,
+        	        priceAdult: "₹27,000 / Adult",
+        	        priceChild: "₹18,000 / Child",
+        	        included: [
+        	            "5 Nights stay in hotels/houseboats",
+        	            "Daily breakfast",
+        	            "Sightseeing in Srinagar, Gulmarg, Pahalgam",
+        	            "Shikara ride on Dal Lake",
+        	            "Airport transfers"
+        	        ],
+        	        excluded: [
+        	            "Airfare & Travel insurance",
+        	            "Lunch & personal expenses",
+        	            "Adventure activities",
+        	            "Shopping & tips"
+        	        ]
+        	    },
+        	    andaman: {
+        	        title: "Andaman Islands",
+        	        img: "assets/andman.jpg",
+        	        desc: `6 Nights / 7 Days
+        	Day 1: Arrival at Port Blair, Cellular Jail & light show.
+        	Day 2: Havelock Island transfer, Radhanagar Beach visit.
+        	Day 3: Scuba diving/snorkeling experience.
+        	Day 4: Neil Island visit & natural bridge.
+        	Day 5: Ross Island & North Bay sightseeing.
+        	Day 6: Leisure & shopping at Port Blair.
+        	Day 7: Breakfast & departure.`,
+        	        priceAdult: "₹34,000 / Adult",
+        	        priceChild: "₹22,000 / Child",
+        	        included: [
+        	            "6 Nights stay in beach resorts",
+        	            "Daily breakfast",
+        	            "Island sightseeing tours",
+        	            "Scuba diving & snorkeling",
+        	            "Airport/Port transfers"
+        	        ],
+        	        excluded: [
+        	            "Airfare",
+        	            "Lunch & dinner not mentioned",
+        	            "Personal expenses",
+        	            "Travel insurance"
+        	        ]
+        	    }
+
+        };
+
+        // Load selected package
+        if (packages[packageId]) {
+            const pkg = packages[packageId];
+            document.getElementById("package-title").textContent = pkg.title;
+            document.getElementById("package-img").src = pkg.img;
+            document.getElementById("package-desc").textContent = pkg.desc;
+            document.getElementById("package-price-adult").textContent = pkg.priceAdult;
+            document.getElementById("package-price-child").textContent = pkg.priceChild;
+
+            // Fill Included list
+            document.getElementById("package-included").innerHTML = pkg.included
+                .map(item => `<li>✔️ ${item}</li>`)
+                .join("");
+
+            // Fill Excluded list
+            document.getElementById("package-excluded").innerHTML = pkg.excluded
+                .map(item => `<li>❌ ${item}</li>`)
+                .join("");
+
+            const adultPrice = parseInt(pkg.priceAdult.replace(/[^\d]/g, ""));
+            const childPrice = parseInt(pkg.priceChild.replace(/[^\d]/g, ""));
+           
+
+            document.getElementById("book-now-btn").href =
+                `booking.html?package=${encodeURIComponent(pkg.title)}&adult=${adultPrice}&child=${childPrice}`;
+        } else {
+            document.getElementById("package-title").textContent = "Package Not Found";
+        }
+    </script>
+
+</body>
+
+</html>

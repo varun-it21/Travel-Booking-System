@@ -1,0 +1,238 @@
+/* Navbar text color */
+.navbar-nav .nav-link {
+  color: #000;
+  font-weight: 500;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+
+/* Hover effect - Yellow text */
+.navbar-nav .nav-link:hover {
+  color: #FFD600;
+}
+
+
+/* Active page highlight */
+.navbar-nav .nav-link.active {
+  color: #FFD600;
+  font-weight: 600;
+}
+
+
+#heroCarousel .carousel-item img {
+  height: 92vh;            /* makes all images same height */
+  object-fit: cover;       /* ensures image fills without distortion */
+  object-position: center; /* centers the image */
+}
+
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  transition: 0.3s;
+  /* background-color: ; */
+}
+
+ .btn-outline-warning {
+    color: black; /* default text color */
+    border-color: #ffc107; /* Bootstrap warning color */
+  }
+
+  .btn-outline-warning:hover {
+    color: white !important;   /* text turns white on hover */
+    background-color: #ffc107; /* warning yellow background */
+    border-color: #ffc107;
+  }
+
+
+  section h3 {
+    font-size: 2rem;
+  }
+  section h5 {
+    margin-top: 8px;
+    font-size: 1.2rem;
+  }
+
+
+  .travelgo-intro {
+  padding: 40px 20px;
+  background: #f9fafb;
+  text-align: center;
+  color: #333;
+}
+.travelgo-intro h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+.travelgo-intro .highlight {
+  color: #FFD600;
+}
+.travelgo-intro p {
+  max-width: 700px;
+  margin: 10px auto;
+  line-height: 1.6;
+}
+
+.happy-clients {
+  padding: 80px 20px;
+  text-align: center;
+  background: #f9f9f9;
+}
+.happy-clients h2 {
+  font-size: 2.5rem;   /* Bigger heading */
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #222;
+}
+.happy-clients .subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+.client-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.client-logos img {
+  height: 400px;   
+  max-width: 200px;
+  filter: grayscale(100%);
+  transition: transform 0.3s, filter 0.3s;
+}
+.client-logos img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1); 
+}
+
+
+.stay-connected {
+  padding: 80px 20px;
+  background: #fff8e1; /* Light yellow to match #FFD600 theme */
+  text-align: center;
+}
+.stay-connected h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+.stay-connected .subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #444;
+}
+.contact-info p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+.contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+.form-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.form-group input,
+.form-group select {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+.contact-form button {
+  width: 100%;
+  padding: 14px;
+  background: #FFD600;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.contact-form button:hover {
+  background: #e6c200;
+}
+
+
+.testimonials {
+  padding: 80px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+.testimonials h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+.testimonials .subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.testimonial-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: left;
+}
+.testimonial-card .message {
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 15px;
+  color: #333;
+}
+.testimonial-card h4 {
+  font-size: 1.1rem;
+  color: #FFD600;
+  font-weight: bold;
+}
+
+.testimonial-card:hover{
+    transform: translateY(-10px);
+    transition: 0.3s;
+    background-color:#FFD600 ;
+}
+
+.testimonial-card .message:hover{
+    color: white;
+}
+
+.testimonial-card:hover h4 {
+  color: #fff;
+}
+  .footer-link {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-link:hover {
+    color: #FFD600; /* Your theme color */
+  }
+  footer .btn-outline-light {
+    border-color: #bbb;
+    color: #bbb;
+    transition: all 0.3s;
+  }
+  footer .btn-outline-light:hover {
+    border-color: #FFD600;
+    background: #FFD600;
+    color: #000;
+  }
